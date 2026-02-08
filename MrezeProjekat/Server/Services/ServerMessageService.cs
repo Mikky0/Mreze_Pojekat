@@ -13,7 +13,8 @@ namespace Server.Services
 {
     public class ServerMessageService : IServerMessageService
     {
-        static IParkingService parkingService = Program.parkingService;
+        IParkingService parkingService => Program.parkingService;
+
 
         public void ProcessClientMessage(TcpClient client)
         {

@@ -12,8 +12,8 @@ namespace Server.Services
 {
     public class ConnectionHandler : IConnectionHandler
     {
-        public static IServerMessageService messageService = Program.messageService;
-        public static IParkingService parkingService = Program.parkingService;
+        IServerMessageService messageService = Program.messageService;
+        IParkingService parkingService = Program.parkingService;
 
         public void HandleTcpClients()
         {
@@ -31,8 +31,13 @@ namespace Server.Services
                 if (socket == tcpListener.Server)
                 {
                     TcpClient newClient = tcpListener.AcceptTcpClient();
-                    clients.Add(newClient);
-                    messageService.SendParkingStatus(newClient);
+
+                    if (newClient.Connected)
+                    {
+                        clients.Add(newClient);
+                        messageService.SendParkingStatus(newClient);
+                    }
+
                 }
                 else
                 {

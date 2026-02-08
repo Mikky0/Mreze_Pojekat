@@ -23,6 +23,8 @@ namespace Client
             try
             {
                 clientConnection.Connect();
+                serverCommunication.ReceiveInitialStatus();
+                StartMainLoop();
             }
             catch (Exception ex)
             {

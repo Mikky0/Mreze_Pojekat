@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces.Client;
+using System.Threading;
 
 namespace Client.Services
 {
@@ -27,6 +28,8 @@ namespace Client.Services
 
                 Program.tcpClient = new TcpClient();
                 Program.tcpClient.Connect(IPAddress.Parse(serverInfo[0]), int.Parse(serverInfo[1]));
+                Thread.Sleep(100);
+
             }
             catch (Exception ex)
             {

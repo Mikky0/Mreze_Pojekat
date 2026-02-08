@@ -62,7 +62,7 @@ namespace Client.Services
 
                 Console.WriteLine("\nOdaberite broj parkinga za oslobađanje:");
                 int index = 1;
-                Dictionary<int, int> izborMap = new Dictionary<int, int>(); // Mapping user input (1,2,3...) to zahtevId
+                Dictionary<int, int> izborMap = new Dictionary<int, int>();
 
                 foreach (var entry in Program.aktivnaZauzeca)
                 {
@@ -74,7 +74,7 @@ namespace Client.Services
                 Console.Write("Izbor: ");
                 if (int.TryParse(Console.ReadLine(), out int izbor) && izborMap.ContainsKey(izbor))
                 {
-                    int zahtevId = izborMap[izbor]; // Get zahtevId from user selection
+                    int zahtevId = izborMap[izbor];
                     string message = $"Oslobađam: {zahtevId}";
                     byte[] data = Encoding.UTF8.GetBytes(message);
                     Program.tcpClient.GetStream().Write(data, 0, data.Length);

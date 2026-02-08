@@ -13,7 +13,7 @@ namespace Server.Services
 {
     public class ServerMaintenanceService : IServerMaintanceService
     {
-        static IConnectionHandler connHandlerService = Program.connHandlerService;
+        IConnectionHandler connHandlerService = Program.connHandlerService;
 
         public void Start()
         {

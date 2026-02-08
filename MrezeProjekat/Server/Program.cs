@@ -17,6 +17,11 @@ namespace Server
 
         public static void Main()
         {
+            messageService = new ServerMessageService();
+            parkingService = new ParkingService();
+            connHandlerService = new ConnectionHandler();
+            server = new ServerMaintenanceService();
+
             server.Start();
             server.Stop();
         }
